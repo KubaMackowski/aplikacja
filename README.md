@@ -1,1 +1,1 @@
-# aplikacja
+# devops_flask_app
