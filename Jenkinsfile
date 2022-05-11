@@ -19,7 +19,7 @@ pipeline {
                     sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONARQUBE_TOKEN}"
                 }
                 timeout(time: 1, unit: 'MINUTES') {
-                    waitForQualtyGate abortPipeline: true
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
