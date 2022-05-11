@@ -2,13 +2,25 @@ pipeline {
     agent any
 
     environment {
+        scannerHome = tool 'SonarQube'
         DOCKER_HUB_PASSWORD = credentials('DOCKER_HUB_PASSWORD')
+        SONARQUBE_TOKEN = credentials('SONARQUBE_TOKEN')
     }
 
     stages {
         stage('Clear running apps') {
             steps {
                 sh 'docker rm -f devops_flask_app || true'
+            }
+        }
+        stage('Sonarqube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONARQUBE_TOKEN}"
+                }
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualtyGate abortPipeline: true
+                }
             }
         }
         stage('Build Docker Image') {
