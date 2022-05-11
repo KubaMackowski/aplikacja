@@ -23,11 +23,11 @@ pipeline {
         }
         stage('Upload backend Docker Image to Docker Hub') {
             steps {
-                sh "docker login -u devopstkhtechnology -p ${DOCKER_HUB_PASSWORD}"
-                sh "docker tag devops_flask_app:${BUILD_NUMBER} devopstkhtechnology/devops_flask_app:${BUILD_NUMBER}"
-                sh 'docker tag devops_flask_app:latest devopstkhtechnology/devops_flask_app:latest'
-                sh "docker push devopstkhtechnology/devops_flask_app:${BUILD_NUMBER}"
-                sh 'docker push devopstkhtechnology/devops_flask_app:latest'
+                sh "docker login -u jmackowski -p ${DOCKER_HUB_PASSWORD}"
+                sh "docker tag devops_flask_app:${BUILD_NUMBER} jmackowski/devops_flask_app:${BUILD_NUMBER}"
+                sh 'docker tag devops_flask_app:latest jmackowski/devops_flask_app:latest'
+                sh "docker push jmackowski/devops_flask_app:${BUILD_NUMBER}"
+                sh 'docker push jmackowski/devops_flask_app:latest'
             }
         }
     }
