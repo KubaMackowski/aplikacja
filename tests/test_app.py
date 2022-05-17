@@ -26,7 +26,7 @@ def test_increment():
     print("Test 1 passed")
 
 def test_decrement():
-    driver.get("http://devops_flask_app:5555/")
+    driver.get("http://localhost:5555/")
 
     counter = driver.find_element(By.ID, "counter")
     counter = int(counter.text) - 1
