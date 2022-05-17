@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 print("Connecting to webdriver")
 counter = 0
 driver = webdriver.Remote(
-    command_executor=('http://selenium-env:4444/wd/hub'),
+    command_executor=('http://localhost:4444/wd/hub'),
     options=webdriver.FirefoxOptions()
 )
 
