@@ -10,7 +10,7 @@ driver = webdriver.Remote(
 )
 
 def test_increment():
-    driver.get("http://devops_flask_app:5555/")
+    driver.get("http://localhost:5555/")
 
     counter = driver.find_element(By.ID, "counter")
     counter = int(counter.text) + 1
